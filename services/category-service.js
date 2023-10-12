@@ -1,4 +1,4 @@
-module.exports = function CategoryService(db) {
+export default function CategoryService(db) {
     async function all() {
         let categories = await db.any("SELECT * from categories");
         return categories;

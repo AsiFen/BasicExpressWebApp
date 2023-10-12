@@ -1,10 +1,10 @@
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
-module.exports = function userModel() {
+export default function userModel() {
 
     const usernameIsValid = username => {
         let valid = /^[0-9a-zA-Z_.-]+$/.test(username)
-        return valid ? username : "invalid format" 
+        return valid ? username : "invalid format"
     };
 
     const cryptPassword = async password => {

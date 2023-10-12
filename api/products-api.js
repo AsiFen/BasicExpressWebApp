@@ -1,5 +1,5 @@
 
-module.exports = function(productService) {
+export default function(productService) {
 	
 	async function all(req, res) {
 		try {

@@ -1,10 +1,10 @@
-const _lodesh = require('lodash');
-const dayjs = require('dayjs');
-let localizedFormat = require('dayjs/plugin/localizedFormat');
-const userModel = require('../model/user.model.js');
-dayjs.extend(localizedFormat)
+import dayjs from 'dayjs';
+import localizedFormat from 'dayjs/plugin/localizedFormat.js';
+import userModel from '../model/user.model.js';
 
-module.exports = function userService(db) {
+dayjs.extend(localizedFormat);
+
+export default function userService(db) {
     const getUserNames = async () => {
         let user = await db.manyOrNone('select username from users');
         return user ? user : null;
@@ -27,11 +27,10 @@ module.exports = function userService(db) {
 
         if (validUserName === username) {
             await db.none('insert into users (username, password, createdAt, active) values ($1, $2, $3, $4)', [validUserName, hashPassword, dayjs().format('llll'), true]);
-            return true
-        }
-        else {
+            return true;
+        } else {
             console.log(validUserName);
-            return validUserName
+            return validUserName;
         }
     }
 
@@ -40,22 +39,10 @@ module.exports = function userService(db) {
         if (validUserName === username) {
             let getUsername = await getUserName(username);
             console.log(getUsername);
-
-            // if (getUsername === ) {
-
-            // }
-            // console.log(await getUserPassword(username, password));
-            // console.log(getUsername.username === username);
-            // if (getUsername.username === username) {
-
-            // } else {
-
-            // }
         } else {
-            console.log(validUser);
+            console.log(validUserName);
             return validUserName;
         }
-
     }
 
     return {
@@ -64,5 +51,5 @@ module.exports = function userService(db) {
         signUp,
         login,
         getUserName
-    }
+    };
 }

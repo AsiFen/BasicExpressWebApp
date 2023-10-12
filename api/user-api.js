@@ -1,6 +1,5 @@
-const { as } = require("pg-promise");
 
-module.exports = function (userService) {
+export default function (userService) {
 
     async function user(req, res) {
         try {

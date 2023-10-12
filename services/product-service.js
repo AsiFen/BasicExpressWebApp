@@ -1,4 +1,4 @@
-module.exports = function ProductService(db) {
+export default function ProductService(db) {
     async function all() {
         const query = `select p.id, p.description, p.price, c.id as category_id, 
             c.description as category_description from products p

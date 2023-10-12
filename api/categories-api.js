@@ -3,7 +3,7 @@
  * A very basic CRUD example using PostgreSQL
  */
 
-module.exports = function (categoryService) {
+export default function (categoryService) {
 	
 	async function all(req, res) {
 		try {

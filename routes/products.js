@@ -1,6 +1,5 @@
-const ProductService = require('../services/product-service');
 
-module.exports = function(productService, categoryService) {
+export default function(productService, categoryService) {
 	
 	async function show(req, res, next) {
 		try {
