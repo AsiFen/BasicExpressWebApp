@@ -44,4 +44,4 @@ jobs:
       run:
         npm test
       env:
-        DATABASE_URL: postgres://coder:coder123@localhost:5432/my_products
+        DATABASE_URL: postgres: postgres://hjkahual:WkBY96G8s8wo9qiKZMGJnVbjKNqX39HV@ella.db.elephantsql.com/hjkahual
