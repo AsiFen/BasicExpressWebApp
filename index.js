@@ -15,17 +15,17 @@ import ProductService from './services/product-service.js';
 import UserService from './services/user-service.js';
 import pgPromise from 'pg-promise';
 
-const DATABASE_URL = process.env.DATABASE_URL;
+const DATABASE_URL = 'postgresql://codex:codex123@localhost:5432/users';
 
 const config = {
   connectionString: DATABASE_URL,
 };
 
-if (process.env.NODE_ENV == 'production') {
-  config.ssl = {
-    rejectUnauthorized: false,
-  };
-}
+// if (process.env.NODE_ENV == 'production') {
+//   config.ssl = {
+//     rejectUnauthorized: false,
+//   };
+// }
 
 const db = pgPromise()(config);
 
@@ -55,6 +55,7 @@ app.set('view engine', 'handlebars');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 function errorHandler(err, req, res, next) {
   res.status(500);

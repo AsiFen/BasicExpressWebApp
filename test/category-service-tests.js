@@ -5,7 +5,7 @@ const ProductService = require("../services/product-service");
 const pgp = require("pg-promise")();
 
 // we are using a special test database for the tests
-const connectionString = process.env.DATABASE_URL || "postgresql://localhost:5432/my_products_tests";
+const connectionString = process.env.DATABASE_URL;
 
 const db = pgp(connectionString);
 

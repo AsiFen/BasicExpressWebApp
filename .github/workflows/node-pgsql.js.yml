@@ -18,28 +18,11 @@ jobs:
       matrix:
         node-version: [16.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-    services:
-      postgres:
-        image: postgres:latest
-        env: 
-          POSTGRES_USER: coder
-          POSTGRES_PASSWORD: coder123
-          POSTGRES_DB: my_products
-        ports:
-        - 5432:5432
-        # Set health checks to wait until postgres has started
-        options: >-
-            --health-cmd pg_isready
-            --health-interval 10s
-            --health-timeout 5s
-            --health-retries 5
-        
+    
     steps:
     - uses: actions/checkout@v3
     - name: Install dependencies
       run: npm install
-    - name: create postgresql tables
-      run: PGPASSWORD=coder123 psql -h localhost -U coder -d my_products -a -f ./tables.sql
     - name: run tests with postgresql
       run:
         npm test
